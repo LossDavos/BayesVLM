@@ -19,7 +19,10 @@ Project page: [https://aaltoml.github.io/BayesVLM/](https://aaltoml.github.io/Ba
    ```bash
    export PYTHONPATH=$PYTHONPATH:/path/to/project/root
    ```
-
+4. (Optional) If you use a M1 Mac with `mps` support you'll need to set the following environment variable:
+   ```bash
+   export PYTORCH_ENABLE_MPS_FALLBACK=1
+   ```
 # Running the Code
 To run the hessian estimation code, use the following command:
 ```bash
@@ -54,7 +57,6 @@ DATA_BASE_DIR/
 ├── flowers102/
 ├── food101/
 ├── homeoffice/
-├── imagenet1k/
 ├── imagenet_r/
 ├── imagenet_val_wds/
 ├── laion400m/
@@ -118,6 +120,9 @@ imagenet_val_wds/
 |–– ...
 |–– imagenet1k-validation-63.tar
 ```
+
+### Imagenet-R
+Download the dataset from https://github.com/hendrycks/imagenet-r and extract it to `./data/imagenet-r/`.
 
 ### Laion400M
 The `laion400M` dataset can be downloaded using the [img2dataset](https://github.com/rom1504/img2dataset) tool. The instructions for the `laion400m` dataset are available [here](https://github.com/rom1504/img2dataset/blob/main/dataset_examples/laion400m.md).

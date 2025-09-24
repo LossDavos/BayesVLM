@@ -11,7 +11,9 @@ from bayesvlm.precompute import precompute_image_features, precompute_text_featu
 from bayesvlm.constants import MODEL_NAME_MAP
 from bayesvlm.utils import get_model_type_and_size, get_image_size, get_transform, load_model
 
-SUPPORTED_DATASETS = ["flowers102", "food101", "stanfordcars", "eurosat", "cifar100", "dtd"]
+SUPPORTED_DATASETS = [
+    "flowers102", "food101", "cifar10", "cifar100", "imagenet-r", "ucf101", "sun397",
+]
 
     
 def evaluate_prediction(prediction: torch.Tensor, label: torch.Tensor, num_classes: int) -> Tuple[float, float, float]:
@@ -26,7 +28,7 @@ def main(
     dataset: str,
     hessian_dir: str,
     model_str: str = "clip-base",
-    pseudo_data_count: int = 10,
+    pseudo_data_count: int = 4,
     batch_size: int = 32,
     num_workers: int = 4,
     device: str = "cuda",
@@ -134,7 +136,7 @@ if __name__ == "__main__":
     parser.add_argument("--dataset", type=str, default='food101', help="The dataset to use")
     parser.add_argument("--hessian_dir", type=str, default='hessians/hessian_CLIP-ViT-B-32-laion2B-s34B-b79K', help="The directory containing the hessian files")
     parser.add_argument("--model", type=str, default="clip-base")
-    parser.add_argument("--pseudo_data_count", type=int, default=10)
+    parser.add_argument("--pseudo_data_count", type=int, default=4)
     parser.add_argument("--batch_size", type=int, default=32)
     parser.add_argument("--num_workers", type=int, default=4)
     parser.add_argument("--device", type=str, default="cuda")

@@ -277,4 +277,4 @@ def compute_log_det_kfac(A: torch.Tensor, B: torch.Tensor):
     logdet_A = torch.logdet(A)
     logdet_B = torch.logdet(B)
     p, q = A.shape[0], B.shape[0]
-    return logdet_A * p + logdet_B * q
+    return 0.5 * (logdet_A * q + logdet_B * p)

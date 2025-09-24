@@ -7,17 +7,15 @@ from dotenv import load_dotenv
 
 from .common import default_transform
 
+# zero-shot downstream datasets
 from .flowers102 import Flowers102DataModule
 from .food101 import Food101DataModule
-from .eurosat import EuroSATDataModule
+from .cifar10 import CIFAR10DataModule
 from .cifar100 import CIFAR100DataModule
-from .stanfordcars import StanfordCarsDataModule
-from .dtd import DTDDataModule
-from .sun397 import Sun397DataModule
-from .oxfordpets import OxfordpetsDataModule
 from .ucf101 import UCF101DataModule
-from .cub import CUBDataModule
+from .sun397 import SUN397DataModule
 
+# active learning downstream datasets
 from .homeoffice import (
     HomeOfficeArtDataModule,
     HomeOfficeClipartDataModule,
@@ -31,7 +29,7 @@ from .homeoffice_da import (
     HomeOfficeDARealWorldDataModule,
 )
 
-from imagenet_wds import ImagenetWDSModule
+from .imagenet_wds import ImagenetWDSModule
 from .imagenet_1k import (
     Imagenet50DataModule,
     Imagenet100DataModule,
@@ -55,14 +53,10 @@ SUPPORTED_MODULES = {
     # downstream datasets
     'flowers102': Flowers102DataModule,
     'food101': Food101DataModule,
-    'eurosat': EuroSATDataModule,
+    'cifar10': CIFAR10DataModule,
     'cifar100': CIFAR100DataModule,
-    'stanfordcars': StanfordCarsDataModule,
-    'dtd': DTDDataModule,
-    'sun397': Sun397DataModule,
-    'oxfordpets': OxfordpetsDataModule,
+    'sun397': SUN397DataModule,
     'ucf101': UCF101DataModule,
-    'cub': CUBDataModule,
 
     # homeoffice datasets
     'homeoffice-art': HomeOfficeArtDataModule,

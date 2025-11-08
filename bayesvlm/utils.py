@@ -4,8 +4,13 @@ from bayesvlm.vlm import CLIPImageEncoder, CLIPTextEncoder, CLIP, SiglipImageEnc
 from bayesvlm.constants import MODEL_NAME_MAP
 
 def get_model_type_and_size(model_str: str) -> Tuple[str, str]:
-    name, size = model_str.split("-")
-    return name, size
+    parts = model_str.split("-")
+    if len(parts) >= 2:
+        name = parts[0]
+        size = parts[1]
+        return name, size
+    else:
+        raise ValueError(f"Invalid model string format: {model_str}. Expected format: 'model-size'")
 
 def get_image_size(model_str) -> int:
     _, _, transform_size = MODEL_NAME_MAP[model_str]

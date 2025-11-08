@@ -365,7 +365,8 @@ class CLIPImageEncoder(torch.nn.Module):
         images = batch['image']
         image_input = dict(pixel_values=images.to(self.device))
         image_outputs = self.vision_encoder(**image_input)
-        image_pooled_output = image_outputs[1]
+        # Use attribute access instead of indexing for better robustness
+        image_pooled_output = image_outputs.pooler_output
         image_embeds = self.vision_projection(image_pooled_output)
 
         if return_activations:
